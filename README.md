@@ -2,6 +2,9 @@
 
 **Loan-Genius-AI** is an intelligent, end-to-end decisioning platform that leverages machine learning to automate loan approval workflows and dynamically price financial products. Designed for banks, NBFCs, and fintech institutions, it enables smarter credit decisions by combining predictive analytics, risk-based pricing, and an intuitive user interface.
 
+![image](https://github.com/user-attachments/assets/24f3147c-0dc3-4a2b-b97b-3e9d4873eca1)
+
+
 ---
 
 ## 📌 Overview
