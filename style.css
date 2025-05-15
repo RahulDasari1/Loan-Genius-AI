@@ -1,0 +1,43 @@
+/* Custom styles to complement Tailwind CSS */
+.tab-active {
+    background-color: #2563eb;
+    color: white;
+}
+
+.loader {
+    border-top-color: #2563eb;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Custom input range styling */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #2563eb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #2563eb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Smooth show animation for result card */
+.result-card.show {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

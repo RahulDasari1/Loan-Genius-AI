@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoanGenius AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Dynamic Loan Prediction with AI</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-10">Get personalized loan amount predictions based on your profile using our advanced generative AI technology.</p>
+            <a href="#prediction-tool" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">Try Prediction Tool</a>
+        </div>
+    </section>
+
+    <!-- Prediction Tool -->
+    <section id="prediction-tool" class="py-16 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Loan Prediction Tool</h2>
+
+            <!-- Tabs -->
+            <div class="flex justify-center mb-8">
+                <div class="inline-flex rounded-lg border border-gray-200 overflow-hidden">
+                    <button id="employee-tab" class="tab tab-active px-6 py-3 font-medium text-sm">Employee</button>
+                    <button id="farmer-tab" class="tab px-6 py-3 font-medium text-sm bg-white text-gray-700">Farmer</button>
+                </div>
+            </div>
+
+            <!-- Employee Form -->
+            <div id="employee-form" class="bg-white rounded-xl shadow-lg p-8 mb-10">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6">Employee Loan Prediction</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Credit Score Factors -->
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">Credit Factors</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="credit-score">Credit Score</label>
+                                <input type="range" min="300" max="850" value="650" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" id="credit-score">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>300</span>
+                                    <span id="credit-score-value">650</span>
+                                    <span>850</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="existing-loans">Existing Loans</label>
+                                <select id="existing-loans" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                                    <option value="0">None</option>
+                                    <option value="1">1 loan</option>
+                                    <option value="2">2 loans</option>
+                                    <option value="3">3+ loans</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="payment-history">Payment History</label>
+                                <select id="payment-history" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                                    <option value="excellent">Excellent</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="poor">Poor</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Non-Credit Score Factors -->
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">Employment Factors</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="monthly-income">Monthly Income (₹)</label>
+                                <input type="number" id="monthly-income" placeholder="e.g. 50000" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="employment-duration">Employment Duration</label>
+                                <select id="employment-duration" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                                    <option value="less-than-1">Less than 1 year</option>
+                                    <option value="1-3">1-3 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="5-10">5-10 years</option>
+                                    <option value="more-than-10">More than 10 years</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="employment-type">Employment Type</label>
+                                <select id="employment-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                                    <option value="government">Government</option>
+                                    <option value="private">Private Sector</option>
+                                    <option value="self-employed">Self-Employed</option>
+                                    <option value="contract">Contract</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <label class="block text-gray-700 mb-2" for="loan-purpose">Loan Purpose</label>
+                    <select id="loan-purpose" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                        <option value="home">Home Loan</option>
+                        <option value="vehicle">Vehicle Loan</option>
+                        <option value="education">Education Loan</option>
+                        <option value="personal">Personal Loan</option>
+                        <option value="business">Business Loan</option>
+                    </select>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button id="employee-predict-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition duration-300">Predict Loan Amount</button>
+                </div>
+            </div>
+
+            <!-- Farmer Form -->
+            <div id="farmer-form" class="bg-white rounded-xl shadow-lg p-8 mb-10 hidden">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6">Farmer Loan Prediction</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Credit Score Factors -->
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">Credit Factors</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="farmer-credit-score">Credit Score</label>
+                                <input type="range" min="0" max="850" value="425" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" id="farmer-credit-score">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>0</span>
+                                    <span id="farmer-credit-score-value">425</span>
+                                    <span>850</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="previous-loans">Previous Agricultural Loans</label>
+                                <select id="previous-loans" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                                    <option value="0">None</option>
+                                    <option value="1">1 loan</option>
+                                    <option value="2">2 loans</option>
+                                    <option value="3">3+ loans</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="loan-repayment">Previous Loan Repayment</label>
+                                <select id="loan-repayment" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                                    <option value="excellent">Excellent</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="poor">Poor</option>
+                                    <option value="none">No Previous Loans</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Non-Credit Score Factors -->
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">Agricultural Factors</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="land-size">Land Size (Acres)</label>
+                                <input type="number" id="land-size" placeholder="e.g. 5" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="crop-type">Primary Crop Type</label>
+                                <select id="crop-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                                    <option value="rice">Rice</option>
+                                    <option value="wheat">Wheat</option>
+                                    <option value="sugarcane">Sugarcane</option>
+                                    <option value="cotton">Cotton</option>
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="fruits">Fruits</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="annual-yield">Annual Yield (₹)</label>
+                                <input type="number" id="annual-yield" placeholder="e.g. 200000" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <label class="block text-gray-700 mb-2" for="farmer-loan-purpose">Loan Purpose</label>
+                    <select id="farmer-loan-purpose" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                        <option value="equipment">Farm Equipment</option>
+                        <option value="seeds">Seeds and Fertilizers</option>
+                        <option value="irrigation">Irrigation System</option>
+                        <option value="land">Land Purchase/Development</option>
+                        <option value="storage">Storage Facility</option>
+                        <option value="other">Other Agricultural Purpose</option>
+                    </select>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button id="farmer-predict-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition duration-300">Predict Loan Amount</button>
+                </div>
+            </div>
+
+            <!-- Results Card -->
+            <div id="result-card" class="result-card bg-white rounded-xl shadow-lg p-8 mb-10 hidden">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Loan Prediction Results</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-medium text-gray-700 mb-2">Recommended Loan Amount</h4>
+                            <p id="loan-amount" class="text-3xl font-bold text-blue-600">₹0</p>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-medium text-gray-700 mb-2">Interest Rate Range</h4>
+                            <p id="interest-rate" class="text-xl font-semibold text-gray-800">0%</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium text-gray-700 mb-2">Loan Term Options</h4>
+                            <p id="loan-term" class="text-xl font-semibold text-gray-800">0 years</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">Key Factors Influencing Decision</h4>
+                        <ul id="key-factors" class="space-y-3">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">Credit Score</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="text-lg font-medium text-blue-800 mb-2">AI Recommendation</h4>
+                    <p id="ai-recommendation" class="text-blue-700">Based on your profile, we recommend exploring loan options with our partner banks for the best rates.</p>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button id="new-prediction-btn" class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition duration-300 mr-4">New Prediction</button>
+                    <button id="apply-now-btn" class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition duration-300">Apply Now</button>
+                </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading" class="hidden">
+                <div class="flex flex-col items-center justify-center py-12">
+                    <div class="loader w-12 h-12 border-4 border-blue-200 border-t-4 rounded-full mb-4"></div>
+                    <p class="text-lg text-gray-600">Analyzing your profile with AI...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">How Our AI Prediction Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Data Collection</h3>
+                    <p class="text-gray-600 text-center">Our system collects relevant financial and personal data to create a comprehensive profile.</p>
+                </div>
+                <div class="card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">AI Analysis</h3>
+                    <p class="text-gray-600 text-center">Our generative AI model analyzes both traditional credit factors and alternative data points.</p>
+                </div>
+                <div class="card bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Personalized Results</h3>
+                    <p class="text-gray-600 text-center">Get tailored loan amount predictions and recommendations based on your unique profile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">About LoanGenius AI</h2>
+                    <p class="text-gray-600 mb-6">LoanGenius AI is revolutionizing the loan prediction process by leveraging advanced generative AI technology to provide more accurate and personalized loan amount predictions.</p>
+                    <p class="text-gray-600 mb-6">Our system goes beyond traditional credit scoring by analyzing a comprehensive set of factors specific to different customer segments, including employees and farmers.</p>
+                    <p class="text-gray-600">By considering both credit and non-credit factors, we can provide more inclusive financial recommendations that better reflect your true repayment capacity.</p>
+                </div>
+                <div class="bg-blue-600 rounded-xl p-8 text-white">
+                    <h3 class="text-2xl font-semibold mb-6">Key Benefits</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>More accurate loan amount predictions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Personalized interest rate estimates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Consideration of occupation-specific factors</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Faster loan approval process</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>More inclusive financial recommendations</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contact Us</h2>
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Get In Touch</h3>
+                        <p class="text-gray-600 mb-6">Have questions about our loan prediction technology? Our team is here to help you.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span class="text-gray-700">support@loangeniusai.com</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                <span class="text-gray-700">+91 1234567890</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <span class="text-gray-700">123 Financial District, Mumbai, India</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Send us a message</h3>
+                        <div id="contact-form" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="name">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="email">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="message">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg input-field focus:outline-none"></textarea>
+                            </div>
+                            <button id="contact-submit-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg shadow transition duration-300">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                        <h3 class="ml-3 text-xl font-bold">LoanGenius AI</h3>
+                    </div>
+                    <p class="text-gray-400">Revolutionizing loan predictions with advanced generative AI technology.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition">How It Works</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.054 10.054 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 LoanGenius AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
