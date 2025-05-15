@@ -97,6 +97,10 @@ document.getElementById('contact-submit-btn').addEventListener('click', function
     alert('Thank you for your message! We will get back to you soon.');
     document.getElementById('contact-form').querySelectorAll('input, textarea').forEach(input => input.value = '');
 });
+document.getElementById('menu-toggle').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
 
 function calculateEmployeeLoanAmount(creditScore, monthlyIncome, employmentType, loanPurpose) {
     let multiplier = 0;
