@@ -1,4 +1,4 @@
-# 💼 Loan-Genius-AI: AI-Powered Loan Approval & Dynamic Pricing Platform
+# Loan-Genius-AI: AI-Powered Loan Approval & Dynamic Pricing Platform
 
 **Loan-Genius-AI** is an intelligent, end-to-end decisioning platform that leverages machine learning to automate loan approval workflows and dynamically price financial products. Designed for banks, NBFCs, and fintech institutions, it enables smarter credit decisions by combining predictive analytics, risk-based pricing, and an intuitive user interface.
 
@@ -11,7 +11,7 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
 Modern lending requires more than rule-based decisioning. Borrowers expect fast, fair, and personalized financial products. Lenders need precision risk assessment and agile pricing mechanisms. **Loan-Genius-AI** addresses this by:
 
@@ -23,27 +23,27 @@ Modern lending requires more than rule-based decisioning. Borrowers expect fast,
 
 ---
 
-## 🔑 Core Capabilities
+## Core Capabilities
 
-### 🧠 AI-Driven Loan Decisioning
+### AI-Driven Loan Decisioning
 
 Classifies applicants into "Approved" or "Declined" based on input attributes using trained machine learning classifiers (e.g., Random Forest, XGBoost).
 
-### 💰 Dynamic Interest Rate Prediction
+### Dynamic Interest Rate Prediction
 
 Utilizes regression models to assign personalized interest rates based on predicted creditworthiness, enabling adaptive risk-based pricing.
 
-### 🖥️ Interactive Frontend
+### Interactive Frontend
 
 A responsive, browser-based interface built with HTML, CSS, and JavaScript allows users to submit loan requests and view instant predictions.
 
-### 📈 Explainability & Insights
+### Explainability & Insights
 
 Integrates feature importance and interpretable outputs to support explainable AI (XAI) in regulatory-sensitive environments.
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ```plaintext
 [User Input]
@@ -61,7 +61,7 @@ Integrates feature importance and interpretable outputs to support explainable A
 
 ---
 
-## 🧰 Technology Stack
+## Technology Stack
 
 | Layer            | Technologies Used                          |
 | ---------------- | ------------------------------------------ |
@@ -73,7 +73,7 @@ Integrates feature importance and interpretable outputs to support explainable A
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```bash
 Loan-Genius-AI/
@@ -93,15 +93,15 @@ Loan-Genius-AI/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### ✅ Prerequisites
+### Prerequisites
 
 * Python 3.8+
 * pip / virtualenv
 * Git
 
-### 🔧 Installation & Execution
+### Installation & Execution
 
 ```bash
 # Clone the repository
@@ -119,7 +119,7 @@ Visit `http://localhost:5000` in your browser to use the application.
 
 ---
 
-## 📊 Sample Input Parameters
+## Sample Input Parameters
 
 | Parameter         | Value    |
 | ----------------- | -------- |
@@ -131,13 +131,13 @@ Visit `http://localhost:5000` in your browser to use the application.
 
 **Output:**
 
-* ✅ Loan Approved
-* 💵 Recommended Interest Rate: 6.7% APR
-* 📉 Risk Profile: Low Risk
+* Loan Approved
+* Recommended Interest Rate: 6.7% APR
+* Risk Profile: Low Risk
 
 ---
 
-## 📦 Model Training
+## Model Training
 
 To retrain the models on a custom dataset:
 
@@ -149,7 +149,7 @@ This script preprocesses the data, trains both classification and regression mod
 
 ---
 
-## 📈 Business Use Cases
+## Business Use Cases
 
 * **Retail Lending** – Automate consumer loan approvals and personalize pricing.
 * **SME Finance** – Evaluate business risk for small and medium enterprises.
@@ -158,7 +158,7 @@ This script preprocesses the data, trains both classification and regression mod
 
 ---
 
-## 🛡️ Compliance & Ethical AI
+## Compliance & Ethical AI
 
 * Supports model explainability using SHAP (optional)
 * GDPR-friendly with no PII stored or transmitted
@@ -166,7 +166,7 @@ This script preprocesses the data, trains both classification and regression mod
 
 ---
 
-## 🤝 Contribution Guidelines
+## Contribution Guidelines
 
 We welcome contributions and enhancements:
 
@@ -184,15 +184,16 @@ git push origin feature/your-feature-name
 
 ---
 
-## 📜 License
+## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-## 📬 Contact
+## Contact
 
 **Rahul Dasari**
-[LinkedIn](https://linkedin.com/in/rahuldasari) • [GitHub](https://github.com/RahulDasari1)
+LinkedIn - https://linkedin.com/in/rahuldasari
+GitHub - https://github.com/RahulDasari1
 
 Have questions or want to collaborate? Feel free to open an issue or reach out directly.
